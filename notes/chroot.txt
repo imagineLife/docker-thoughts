@@ -1,0 +1,105 @@
+KERNEL FEAT 1: CHROOT
+this is about un=sharing file-system content
+
+- sets root directory of a new process
+- in containers, the root of the new container-root should be 
+- PURPOSE FOR CONTAINERS
+    - restrict hardware-file-access between containers
+    - new process (container) can not see outside of its chroot-ed root dir
+
+MACintosh is not a linux=based kernel, its a unix based kernel
+
+COMMANDS TO RUN
+docker run -it —name docker-host —rm —privileged ubuntu:bionic
+- creates a ubuntu ‘container’
+- drops us inside that container
+run in any terminal/emulator (zsh && bash work)
+…
+…
+
+now I’m @ the root of the new container
+check which linux env im in 
+
+cat /etc/issue
+- prints ubuntu 18.04.3, which linux env we are in!
+
+this can also be done in powershell, windows terminal
+ 
+
+ls
+see entire system
+
+
+MAKING A NEW ROOT
+- mkdir my-new-root
+- cd my-new-root
+CANT just run chroot . bash
+…terminal wi’ll run… ’…what is bash”
+there is not bash in there
+need to copy OS inside the new dir, my-new-root
+
+- make a bin folder
+mkdir my-new-root/bin
+
+- copy the existing bin into my-new-root
+cp bin/bash my-new-root/bin
+
+STILL can’t run bash
+need libraries that the processes && commands need to run
+
+- show needed dependencies of bash
+ldd bin/bash
+
+- make 2 more directories, lib && lib64
+mkdir my-new-root/lib{,64}
+
+- show all files in my-new-root
+ls the dir
+	… should show 
+	bin lib lib64
+
+notice the ldd paths listed in the ldd command
+the dependencies that have paths need to be copied into my-new-proj
+
+- copy dependencies from ldd to new-proj
+1. cp
+    1. highlight && paste the 3 paths from libtinfo.so, libdl.so, && libc.so
+    2. PASTE after cp
+2. cp /path/1 /path/2 /path/3 my-new-root/lib
+
+Check that dependencies have been copied
+cd my-new-root
+ls lib
+	… should show 3 things, the libc, libel && libtinfo
+
+- copy && prepare lib64 file with file from ldd output
+cp /lib64/ld-linux-x86-64.so.2 lib64/
+
+NOW can go into new env
+- Enter new env && open bash terminal
+chroot my-new-root/ bash
+
+- see what dir im im
+pwd 
+bash thinks i’m in the root of the system! this is part of the container goal
+
+- see what files are in my env
+ls
+notice no files!
+
+- get out of chroot
+exit
+
+
+- prepare environment 
+… copy files like we just did into my-new-root/lib
+
+
+
+
+Get the ‘cat’ command into our new env
+- copy from bin/cat into bin
+cp /bin/cat bin
+
+- copy from bin/cat into bin
+cp /bin/cat bin
