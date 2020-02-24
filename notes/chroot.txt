@@ -94,6 +94,9 @@ the dependencies that have paths need to be copied into my-new-proj
     1. highlight && paste the 3 paths from libtinfo.so, libdl.so, && libc.so
     2. PASTE after cp
 2. cp /path/1 /path/2 /path/3 my-new-root/lib
+... copy command should be...
+cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /lib64/ld-linux-x86-64.so.2 my-new-root/lib
+
 
 Check that dependencies have been copied
 cd my-new-root
