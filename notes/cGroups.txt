@@ -1,0 +1,10 @@
+KERNEL FEAT 3: CGroups
+invented @ google
+THE PROBLEM
+- running multiple processes
+    - (web-servers, not separate vms)
+- BUT if google-maps team writes a bad process, might kill other google process
+
+THE SOLUTION
+- NEEDED to control how much cpu each process gets
+
