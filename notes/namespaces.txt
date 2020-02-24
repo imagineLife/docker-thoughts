@@ -61,3 +61,31 @@ https://ss64.com/bash/mount.html
 - "...attaches file-system found on some device TO the big file tree..."
 -t indicates the file-system type
 
+
+NOW running this...
+ps aux
+...which shows list of processes that this env can see, IT cannot see any processes outside of itself :) Good news! It should return something like...
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1  18508  3424 ?        S    11:17   0:00 bash
+root         9  0.0  0.1  34400  2844 ?        R+   11:18   0:00 ps aux
+
+ONE WAY TO PROVE THIS, that the child cannot see the parent processes....
+1. open new terminal window
+2. run docker container ls in this
+3. get container name (here, docker-host)
+4. get into the container with bash, using....
+docker exec -it docker-host /bin/bash
+5. see ALL processes in the parent container using...
+ps aux
+...
+should return something like
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1  18508  3484 pts/0    Ss   10:26   0:00 /bin/bash
+root      7430  0.0  0.0   4520   724 pts/0    S    11:21   0:00 unshare --mount --uts --ipc --net --pid --fork --user --map-root-user chroot /bet
+root      7431  0.0  0.1  18508  3472 pts/0    S+   11:21   0:00 bash
+root      7441  0.6  0.1  18508  3452 pts/1    Ss   11:22   0:00 /bin/bash
+root      7451  0.0  0.1  34404  2896 pts/1    R+   11:22   0:00 ps aux
+
+notice more processes than the child 'knows' about!
+
+
