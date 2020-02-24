@@ -36,3 +36,29 @@ start another terminal
 - new terminal
 - docker container ls
 docker exec -it docer-host /bin/bash
+
+
+find the bash process of the child container, enter this in terminal 
+ps aux
+...show ALL processes, even child processes
+- the 'bash' command, under the COMMAND column, directly below the unshare... command, is the child process we want. Find the Process id under the PID column (7501 or something)
+
+
+assign all processes inside this un-shared child TO a control-group, entering this command in the PARENT container
+cgclassify -g cpu,memory,blkio,devices,freezer:sandbox 7501
+
+SEE that the process is attached to a cgroup 
+cat sys/fs/cgroup/cpu/sandbox/tasks
+NOW, the process is classified under the control-group
+
+
+SEE what kind of resources this control-group has access to...
+cat sys/fs/cgroup/cpu/sandbox/cpu.shares
+... should show 1024...?! shows that this is a low-priority control-grooup
+
+SET the c-group to ONLY use 5% of processing power
+cgset -r cpu.cfs_period=100000 -r cpu.cfs_quota_us=$[ 5000 * $(getconf _NPROCESSORS_ONLN) ] sandbox
+
+SET the c-group max memory allotted to 80Megabytes
+cgset -r memory.limit_in_bytes=80M sandbox
+
