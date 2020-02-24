@@ -1,5 +1,5 @@
 KERNEL FEAT 2: NAMESPACES
-this is about un-sharing process capabilities
+this is about un-sharing process capabilities, controlling the flow of capabilities in-between processes
 
 problem with chroot alone.
 chroot is concerned with isolating file-system 'roots'
@@ -89,3 +89,5 @@ root      7451  0.0  0.1  34404  2896 pts/1    R+   11:22   0:00 ps aux
 notice more processes than the child 'knows' about!
 
 
+NOTE the host can deal with ALL child processes.
+Child CANNOT see outside itlsef after using this namespace unsharing.
