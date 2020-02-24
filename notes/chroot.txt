@@ -112,7 +112,9 @@ chroot my-new-root/ bash
 
 - see what dir im im
 pwd 
-bash thinks i’m in the root of the system! this is part of the container goal
+...shows /...
+bash thinks i’m in the root of the system! 
+this is part of the container goal
 
 - see what files are in my env
 ls
