@@ -8,3 +8,31 @@ THE PROBLEM
 THE SOLUTION
 - NEEDED to control how much cpu each process gets
 
+HERE, this reviewes ram && cpu. but theres much more.
+
+
+RUN THIS 
+apt-get install -y cgroup-tools htop
+
+#CGroup
+https://wiki.archlinux.org/index.php/cgroups
+
+#htop
+https://hisham.hm/htop/
+
+CHECK OUT HTOP
+enter htop into the terminal, its a 'gui' of processes running on the computer :) interesting!
+
+
+creat a new control-group
+cgcreate -g cpu,memory,blkio,devices,freezer:/sandbox
+
+re-enter an unshared environment
+cgcreate -g cpu,memory,blkio,devices,freezer:/sandbox
+root@e99d8cb3b537:/better-root# unshare --mount --uts --ipc --net --pid --fork --user --map-root-user chroot /better-root bash
+
+enter the HOST container
+start another terminal
+- new terminal
+- docker container ls
+docker exec -it docer-host /bin/bash
