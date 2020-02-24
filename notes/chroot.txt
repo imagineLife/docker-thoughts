@@ -10,12 +10,21 @@ this is about un=sharing file-system content
 MACintosh is not a linux=based kernel, its a unix based kernel
 
 COMMANDS TO RUN
-docker run -it —name docker-host —rm —privileged ubuntu:bionic
+docker run -it --name docker-host --rm --privileged ubuntu:bionic
+
+... should return something like...
+Unable to find image 'ubuntu:bionic' locally
+bionic: Pulling from library/ubuntu
+423ae2b273f4: Pull complete 
+de83a2304fa1: Pull complete 
+f9a83bce3af0: Pull complete 
+b6b53be908de: Pull complete 
+Digest: sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
+Status: Downloaded newer image for ubuntu:bionic
+
 - creates a ubuntu ‘container’
 - drops us inside that container
-run in any terminal/emulator (zsh && bash work)
-…
-…
+run in any terminal/emulator (zsh && bash work) 
 
 now I’m @ the root of the new container
 check which linux env im in 
@@ -28,6 +37,10 @@ this can also be done in powershell, windows terminal
 
 ls
 see entire system
+...should return something like...
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+
 
 
 MAKING A NEW ROOT
