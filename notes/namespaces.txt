@@ -10,5 +10,6 @@ ps
 
 companyA process can KILL companyB processes
 
-
 Introducing name-spaces to restrict capabilities
+
+using UNSHARE command
