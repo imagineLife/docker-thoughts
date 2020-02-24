@@ -13,3 +13,33 @@ companyA process can KILL companyB processes
 Introducing name-spaces to restrict capabilities
 
 using UNSHARE command
+
+RUN THESE COMMANDS, get a new env up && running
+in the parent container
+# updates available packages I can use
+- apt-get update
+
+# a tool
+# https://wiki.debian.org/Debootstrap
+- apt-get install debootstrap -y
+
+debootstrap --variant=minbase bionic /better-root
+...
+- minbase tells to download least amt of stuff necessary
+- bionic is kind of ubuntu
+- /better-root is new root name
+... gets the bare minimunm stuff (filesystem stuff) needed to run a debian-based ubuntu
+... should end terminal output with 'Base system installed successfully'
+
+SEE the new bin tools in this dir
+ENTER these commands
+cd better-root
+chroot . bash
+ls bin
+
+...here will show many bin tools i can use in this debootstrapped env!
+
+
+
+
+
