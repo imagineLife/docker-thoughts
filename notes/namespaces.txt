@@ -1,0 +1,14 @@
+KERNEL FEAT 2: NAMESPACES
+this is about un-sharing process capabilities
+
+problem with chroot alone.
+chroot is concerned with isolating file-system 'roots'
+BUT IF 2 chrooted envs are next to one-another, they can see each others processes
+
+- list processes
+ps
+
+companyA process can KILL companyB processes
+
+
+Introducing name-spaces to restrict capabilities
