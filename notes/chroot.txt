@@ -128,6 +128,9 @@ exit
 … copy files like we just did into my-new-root/lib
 
 
+COPY the ls command from parent 'container' to 'my-new-container'
+cp /bin/ls my-new-root/bin
+
 
 
 Get the ‘cat’ command into our new env
