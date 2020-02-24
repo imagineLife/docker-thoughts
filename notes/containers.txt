@@ -44,4 +44,6 @@ CONTAINERS
     - namespaces
     - control-groups (cgroups)
 
+(the KERNEL connects the application software to the hardware of the machine)
+
 NOTE: the bin folder has the binaries that we need
