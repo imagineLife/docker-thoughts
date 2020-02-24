@@ -1,0 +1,47 @@
+What?!
+HISTORY
+- used to need a bunch of physical servers…
+    - dell
+    - emc
+    - hardware
+    - BENEFITS
+        - security
+        - custom fine-tuning
+    - PROBLEMS
+        - always need more than you need
+        - capacity is limited
+        - takes TIME to add servers
+- VIRTUAL MACHINES
+    - a layer of abstraction between us & the metal
+    - multiple guest instances of linux running inside a HOST instance of  linux
+    - BENEFIT
+        - spin up a new vm
+    - PROBLEMS
+        - example
+            - give 2 companies the same server,
+            - competing for source machine resources
+            - bugs can go cross vm
+        - performance
+            - 10 VMS in one physical server
+                - means REDUNDANT stuff, like OSs
+    - CAN….
+        - limit resources
+
+PUBLIC CLOUD
+- get VMS from hosted services, AWS, GCP
+    - BENEFITS
+        - cheaper than humans
+        - front-end engineers can manage servers!
+    - PROBLEM
+        - still have to manage…
+            - software
+            - networking
+            - updating
+
+CONTAINERS
+- 3 Kernel Features put together
+    - chroot
+    - namespaces
+    - control-groups (cgroups)
+
+NOTE: the bin folder has the binaries that we need
