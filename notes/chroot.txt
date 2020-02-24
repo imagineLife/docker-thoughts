@@ -131,6 +131,20 @@ exit
 COPY the ls command from parent 'container' to 'my-new-container'
 cp /bin/ls my-new-root/bin
 
+Check the dependencies needed to run the ls command
+ldd /bin/ls
+
+copy these dependencies from parent to child, like previous command being copied
+
+ABOVE OVERVIEW OF USING CHROTT && COPYING OS COMMANDS
+- COMMANDS have dependencies,
+- ... dependencies can be discovered by typing 
+``` ldd/{command-name-here}``` 
+- ... ( we did this for the bash command && the ls command)
+- COMMAND DEPENDENCIES have been copied to my-new-root
+- now my-new-root can use the bash && ls commands
+
+
 
 
 Get the ‘cat’ command into our new env
