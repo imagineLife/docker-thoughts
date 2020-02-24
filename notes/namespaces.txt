@@ -43,3 +43,21 @@ ls bin
 
 
 
+UNSHARE HERE!!
+enter this command
+unshare --mount --uts --ipc --net --pid --fork --user --map-root-user chroot /better-root bash
+
+Whats it do-ish?!
+- tell everything that I want to 'un'-share between this env & others
+- RUNS bash inside the dir after chrooting into it
+
+MORE CODE
+moount -t proc none /proc
+mount -t sysfs none /sys
+mount -t tmpfs none /tmp
+
+What's it do-ish?
+https://ss64.com/bash/mount.html
+- "...attaches file-system found on some device TO the big file tree..."
+-t indicates the file-system type
+
