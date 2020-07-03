@@ -1,5 +1,15 @@
+
 KERNEL FEAT 1: CHROOT
 this is about un=sharing file-system content
+... linux jails, jailing a process to a particular part of the OS
+
+do all of this INSIDE A DOCKER CONTAINER!
+even though this portion is ABOUT the make-up of containers, this step is to USE a UNIX-based OS, not the mac linux-based os
+
+setup a docker container to use...
+```
+docker run -it --name docker-host --rm --privileged ubuntuLbionic
+```
 
 - sets root directory of a new process
 - in containers, the root of the new container-root should be 
@@ -7,12 +17,9 @@ this is about un=sharing file-system content
     - restrict hardware-file-access between containers
     - new process (container) can not see outside of its chroot-ed root dir
 
-MACintosh is not a linux=based kernel, its a unix based kernel
+MACintosh is not a linux-based kernel, its a unix based kernel
 
-COMMANDS TO RUN
-docker run -it --name docker-host --rm --privileged ubuntu:bionic
-
-... should return something like...
+the above docker container command should return something like...
 Unable to find image 'ubuntu:bionic' locally
 bionic: Pulling from library/ubuntu
 423ae2b273f4: Pull complete 
@@ -29,8 +36,8 @@ run in any terminal/emulator (zsh && bash work)
 now I’m @ the root of the new container
 check which linux env im in 
 
-cat /etc/issue
-- prints ubuntu 18.04.3, which linux env we are in!
+```cat /etc/issue```
+- prints ```ubuntu 18.04.3```, which linux env we are in!
 
 this can also be done in powershell, windows terminal
  
@@ -153,3 +160,5 @@ cp /bin/cat bin
 
 - copy from bin/cat into bin
 cp /bin/cat bin
+
+
