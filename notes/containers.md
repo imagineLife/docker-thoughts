@@ -29,6 +29,10 @@ HISTORY
 PUBLIC CLOUD
 - get VMS from hosted services, AWS, GCP
     - BENEFITS
+        - move data-center away from in-house, get vms from services...
+          - region sensitive
+          - pay per usage
+          - never have to worry about hardware
         - cheaper than humans
         - front-end engineers can manage servers!
     - PROBLEM
@@ -36,8 +40,12 @@ PUBLIC CLOUD
             - software
             - networking
             - updating
+            - OS redundancys still exist
+    - .. check out Terraform, Chef, Puppet, Salt...
 
 CONTAINERS
+- security features like vms, but 'lighter-weight'...
+- host OS executing containers
 - 3 Kernel Features put together
     - chroot
     - namespaces
