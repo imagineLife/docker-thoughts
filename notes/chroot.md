@@ -41,51 +41,54 @@ check which linux env im in
 
 this can also be done in powershell, windows terminal
  
-
-ls
-see entire system
+**see entire system**
+```ls```
 ...should return something like...
+```
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
+```
 
 
 
-MAKING A NEW ROOT
-- mkdir my-new-root
-- cd my-new-root
-CANT just run chroot . bash
+**MAKING A NEW ROOT**
+make a new folder to put my container in
+```mkdir my-new-root```
+```cd my-new-root```
+
+CANT just run ```chroot . bash```
 …terminal wi’ll run… ’…what is bash”
 there is not bash in there
 
 need to copy OS inside the new dir, my-new-root
 
-- make a bin folder
-mkdir my-new-root/bin
+**make a bin folder**
+```mkdir my-new-root/bin```
 
-- copy the existing bin into my-new-root
-cp bin/bash my-new-root/bin
+**copy the existing bin into my-new-root**
+```cp bin/bash my-new-root/bin```
 
 show the new bin folder,
-ls my-new-root/bin
+```ls my-new-root/bin```
 ...should show... bash
 
 STILL can’t run bash
 need libraries that the processes && commands need to run
 
 - show needed dependencies of bash
-ldd bin/bash
+```ldd bin/bash```
 ...should return something like...
 
-	linux-vdso.so.1 (0x00007fff5f5e1000)
+	```linux-vdso.so.1 (0x00007fff5f5e1000)
 	libtinfo.so.5 => /lib/x86_64-linux-gnu/libtinfo.so.5 (0x00007f1b0eb75000)
 	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f1b0e971000)
 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f1b0e580000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f1b0f0b9000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f1b0f0b9000)```
 
 we need this stuff.
 
 - make 2 more directories, lib && lib64
-mkdir my-new-root/lib{,64}
+```mkdir my-new-root/lib{,64}```
 
 - show all files in my-new-root
 cd into my-new-root
@@ -100,22 +103,22 @@ the dependencies that have paths need to be copied into my-new-proj
 1. cp
     1. highlight && paste the 3 paths from libtinfo.so, libdl.so, && libc.so
     2. PASTE after cp
-2. cp /path/1 /path/2 /path/3 my-new-root/lib
+2. ```cp /path/1 /path/2 /path/3 my-new-root/lib```
 ... copy command should be...
-cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /lib64/ld-linux-x86-64.so.2 my-new-root/lib
+```cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /lib64/ld-linux-x86-64.so.2 my-new-root/lib```
 
 
 Check that dependencies have been copied
-cd my-new-root
-ls lib
+```cd my-new-root```
+```ls lib```
 	… should show 3 things, the libc, libel && libtinfo
 
 - copy && prepare lib64 file with file from ldd output
-cp /lib64/ld-linux-x86-64.so.2 lib64/
+```cp /lib64/ld-linux-x86-64.so.2 lib64/```
 
-NOW can go into new env
+**NOW can go into new env**
 - Enter new env && open bash terminal
-chroot my-new-root/ bash
+```chroot my-new-root/ bash```
 
 - see what dir im im
 pwd 
