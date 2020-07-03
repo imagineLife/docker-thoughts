@@ -94,7 +94,7 @@ we need this stuff.
 cd into my-new-root
 ls the dir
 	… should show 
-	bin lib lib64
+	```bin lib lib64```
 
 notice the ldd paths listed in the ldd command
 the dependencies that have paths need to be copied into my-new-proj
@@ -121,17 +121,17 @@ Check that dependencies have been copied
 ```chroot my-new-root/ bash```
 
 - see what dir im im
-pwd 
+```pwd```
 ...shows /...
 bash thinks i’m in the root of the system! 
 this is part of the container goal
 
 - see what files are in my env
-ls
+```ls```
 notice no files!
 
 - get out of chroot
-exit
+```exit```
 
 
 - prepare environment 
@@ -139,10 +139,10 @@ exit
 
 
 COPY the ls command from parent 'container' to 'my-new-container'
-cp /bin/ls my-new-root/bin
+```cp /bin/ls my-new-root/bin```
 
 Check the dependencies needed to run the ls command
-ldd /bin/ls
+```ldd /bin/ls```
 
 copy these dependencies from parent to child, like previous command being copied
 
@@ -158,10 +158,4 @@ ABOVE OVERVIEW OF USING CHROTT && COPYING OS COMMANDS
 
 
 Get the ‘cat’ command into our new env
-- copy from bin/cat into bin
-cp /bin/cat bin
-
-- copy from bin/cat into bin
-cp /bin/cat bin
-
-
+```cp /bin/cat bin```
