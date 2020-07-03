@@ -1,19 +1,18 @@
 What?!
 HISTORY
 - used to need a bunch of physical servers…
-    - dell
-    - emc
-    - hardware
     - BENEFITS
         - security
         - custom fine-tuning
     - PROBLEMS
-        - always need more than you need
+        - always need more capacity than you need
         - capacity is limited
         - takes TIME to add servers
-- VIRTUAL MACHINES
+        - hardware breaks
+- VIRTUAL MACHINES came along...
     - a layer of abstraction between us & the metal
     - multiple guest instances of linux running inside a HOST instance of  linux
+    - one hardware, many 'virtual' servers
     - BENEFIT
         - spin up a new vm
     - PROBLEMS
