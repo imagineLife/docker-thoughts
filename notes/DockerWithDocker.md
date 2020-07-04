@@ -19,3 +19,22 @@ check cur version
 ```cat /etc/issue```
 should return ```Welcome to Alpine...```
 
+### docker run shortcut
+```
+docker run -it
+``` 
+- puts me interactively inside the container
+
+### run a command after starting a container
+```
+docker run alpine:3.10 ls
+```
+- shows the ls of the container (the root of the container)
+
+### order of  commands matters
+- docker
+- run (the command)
+- flags (--t --rm)
+- name of container (alpine:3.10)
+- command to run (ls)
+- 
