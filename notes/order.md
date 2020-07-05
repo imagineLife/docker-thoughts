@@ -5,3 +5,4 @@
 5. setup docker
 6. DockerWithDocker
 7. NodeWithDocker
+8. DockerCLI
