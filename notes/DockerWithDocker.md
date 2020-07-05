@@ -27,21 +27,50 @@ docker containers are made to be spun up && thrown out
 
 ### docker run shortcut
 ```
-docker run -it
+docker run -it alpine:3.10
 ``` 
 - puts me interactively inside the container
+- docker run alpine 3.10 runs && quits
 
 ### run a command after starting a container
 ```
 docker run alpine:3.10 ls
 ```
-- shows the ls of the container (the root of the container)
+- ls of the container (the root of the container)
 
 ### order of  commands matters
 - docker
 - run (the command)
 - flags (--t --rm)
 - name of container (alpine:3.10)
-- command to run (ls)
+- command to run (ls, etc)
 
-### how clear docker images that are running
+### how to clear docker images that are running
+```
+docker image prune
+```
+
+### run a container in the bg 
+```
+docker run -it --detach ubuntu:bionic
+```
+- detach spits out the hash
+- runs container in bg
+
+### attach a bg container
+```
+docker attach <container-name-here>
+```
+
+### kill a container
+``` docker kill <container-id OR name>```
+
+
+### Naming a container
+``` docker run -it --name my-container apline:3.10```
+- NAMES the container my-container
+
+
+### NOTE: cant use a container name 2x
+- particularly after 'kill'ing a container
+- MUST run ```docker rm my-alpine```
