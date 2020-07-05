@@ -54,3 +54,27 @@ CONTAINERS
 (the KERNEL connects the application software to the hardware of the machine)
 
 NOTE: the bin folder has the binaries that we need
+
+
+# HUH?!
+- allows for system-agnosticism
+- each container has its own...
+  - os
+  - cpu processes
+  - memory
+  - network resources
+- usually run 1 specific task
+  - node
+  - mysql
+- FORM of virtualization...
+  - unlike a vm
+    - vms have to emulate hardware then boot an os
+    - then a translator app, on the host application (called a hypervisor), allows communication from host to vm
+  - HERE THOUGH...
+    - docker communicates through system kernel
+    - can run any version of linux in a container
+    - uses less disk space
+      - if multiple containers use the same base container, a single copy of the source is saved.. not 3x
+- docker-file explains how a docker image will be built...
+  - FROM: ubuntu:etc...
+  
