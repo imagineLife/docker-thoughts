@@ -27,3 +27,13 @@ spits out metadata...
 
 ```docker unpause <container-id>```
 
+### run vs exec
+- run starts a new container
+- exec runs something on an existing container
+- ```docker exec <container-name> bash```
+- bash of an existing container
+
+
+### history
+```docker history node:12-stretch```
+- see changes in container/image history
