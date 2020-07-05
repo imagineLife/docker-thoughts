@@ -25,3 +25,4 @@ can be applied to other language tools as well (python etc)
   - node:10.17.0-buster
   - node:12.13.1-buster
 tags can be leveraged to pin the version... if an app/container is created, and set on the shelf for a year, the TAGS save the versions of the modules, so that newer breaking versions aren't over-writing the working version 
+- 12-stretch is a good one!
