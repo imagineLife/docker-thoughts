@@ -39,3 +39,17 @@ docker build -t this-node-app .
 ``` 
 docker run this-node-app
 ```
+
+### cant hit ctl+c
+docker gives a hack flag that allows ctrl+c to work...
+```
+docker run --init this-node-app
+```
+the --init flag runs 'tini', so that when i want to quit the container by typing ctrl+c, tini does it for me!
+
+### allow network traffic from host to container
+expose port 3000 to the open world
+```
+docker run --publish 3000:3000 this-node-app
+```
+the --publish flag maps internal port to external port!
