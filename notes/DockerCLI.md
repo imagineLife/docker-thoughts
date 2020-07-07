@@ -34,6 +34,10 @@ spits out metadata...
 - ```docker exec <container-name> bash```
 - bash of an existing container
 
+### connect to a container using exec
+```
+docker exec -it <container-name> bash
+```
 
 ### history
 ```docker history node:12-stretch```
@@ -41,3 +45,4 @@ spits out metadata...
 
 ### kill all containers
 ```docker kill $(docker ps -q)```
+
