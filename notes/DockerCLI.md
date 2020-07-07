@@ -1,3 +1,4 @@
+
 ## Docker CLI
 
 ### A PARTY TRICK!
@@ -37,3 +38,6 @@ spits out metadata...
 ### history
 ```docker history node:12-stretch```
 - see changes in container/image history
+
+### kill all containers
+```docker kill $(docker ps -q)```
