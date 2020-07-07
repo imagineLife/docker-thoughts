@@ -23,3 +23,4 @@ FROM node:12-stretch
 ```
 CMD ["node", "-e", "console.log(\"omg hi lol\")"]
 ```
+- the -e flag says 'immediately run this!'
