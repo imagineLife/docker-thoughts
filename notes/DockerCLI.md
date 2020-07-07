@@ -67,3 +67,14 @@ removes an IMAGE
 
 ### docker container prune
 removes all stopped container
+
+
+### docker restart <container-name>
+restarts the container
+... some containers don't notice 'restart' signals, like node
+
+### search docker hub for a python container
+```
+docker search python
+```
+searches dockerHub for containers matching the string
