@@ -35,3 +35,9 @@ build the docker container, finding the dockerFile
 
 ### run the container
 ```docker run -it <container-hash>```
+
+### build using a name
+```
+docker build --tag friendly-name-here .
+```
+... just tagged the container as friendly-name-here:latest!!
