@@ -59,4 +59,11 @@ docker info
 ### docker top <container-id>
 - use top to see all process running in a container
 
+### docker rm <container-hash>
+removes a container
 
+### docker rmi
+removes an IMAGE
+
+### docker container prune
+removes all stopped container
