@@ -53,3 +53,4 @@ expose port 3000 to the open world
 docker run --publish 3000:3000 this-node-app
 ```
 the --publish flag maps internal port to external port!
+INTERESTING: he recommends publish flag OVER the expose flag
