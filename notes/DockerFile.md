@@ -24,3 +24,14 @@ FROM node:12-stretch
 CMD ["node", "-e", "console.log(\"omg hi lol\")"]
 ```
 - the -e flag says 'immediately run this!'
+- this is the same as running, from cmd line,
+	- ```node -e console.log("hello!")```
+
+
+### build the docker container
+build the docker container, finding the dockerFile
+```docker build .```
+...should spit out stats that it is running the container, including container name
+
+### run the container
+```docker run -it <container-hash>```
