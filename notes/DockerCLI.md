@@ -46,3 +46,17 @@ docker exec -it <container-name> bash
 ### kill all containers
 ```docker kill $(docker ps -q)```
 
+### docker info
+```
+docker info
+```
+- dumps a bunch of info about the HOST machine running docker...
+	- # of containers running
+	- osType
+	- ...more
+
+### docker run -dit mongo
+### docker top <container-id>
+- use top to see all process running in a container
+
+
