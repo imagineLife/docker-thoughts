@@ -36,3 +36,20 @@ start().catch(e => {
 ```
 here, hapi builds a server, like express
 
+### install dependencies
+- go to terminal
+- go to directory 'more-complicated-nodejs-app' or whatever it is called
+- run ```npm init -y```
+  - should now be package.json next to the index.js above
+- run ``` npm install @hapi/hapi hapi-pino ```
+- can TEST the node process by running ```node index.js```
+  - the server can be reached @ localhost:3000/
+  - the terminal should log some details
+
+### add a dockerfile
+touch Dockerfile
+```
+FROM node:12-stretch
+
+```
+
