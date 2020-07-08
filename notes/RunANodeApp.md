@@ -8,6 +8,8 @@ FROM node:12-stretch
 
 USER node
 
+WORKDIR /home/node/code
+
 COPY --chown=node:node index.js index.js
 
 CMD ["node", "index.js"]
@@ -18,6 +20,7 @@ NOTE:
 - with the user as node, the container is run as that user
 - if the USER row was BELOW the COPY command, the copy command would fail
 - --chown=node:node changes who OWNS the index file
+- workdir: a path to the 'working' directory, which gets created if not existing already
 
 ### index.js
 ```
@@ -39,4 +42,10 @@ docker build -t my-node-app
 docker run --init --rm --publish 3000:3000 my-node-app whoami
 ```
 ... should print ```node``` as the node user is the user being used
+
+### run the container, see new directory path
+```
+docker run --init --rm --publish 3000:3000 my-node-app pwd
+```
+... should output /home/node/code
 
