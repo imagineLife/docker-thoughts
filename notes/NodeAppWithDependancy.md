@@ -51,5 +51,65 @@ touch Dockerfile
 ```
 FROM node:12-stretch
 
+USER node
+
+WORKDIR /home/node/code
+
+# copy all from . to .
+COPY --chown=node:node . .
+
+CMD ["node", "index.js"]
+```
+
+
+### build the container
+```docker build -t noder-server-container```
+
+### run the container && server
+```
+docker run --init --rm --publish 3000:3000 noder-server-container 
+```
+
+## HMM
+- above, the node modules have been installed on the HOST computer. This is not optimal, perhaps
+  - the npm install has to happen inside the container
+  - the dockerfile needs updating...
+
+```
+FROM node:12-stretch
+
+USER node
+
+WORKDIR /home/node/code
+
+# copy all from . to .
+COPY --chown=node:node . .
+
+# adheres to the package-lock file, ignores some npm i stuff
+RUN npm ci
+
+CMD ["node", "index.js"]
+```
+### ...permission errors!
+- this home/code  dir is owned by 'root' user not 'node' user
+- dockerfile needs updating
+
+```
+FROM node:12-stretch
+
+USER node
+
+#mkdir so that workdir doesnt try to make it as node user with bad permissions
+RUN mkdir /home/node/code
+
+WORKDIR /home/node/code
+
+# copy all from . to .
+COPY --chown=node:node . .
+
+# adheres to the package-lock file, ignores some npm i stuff
+RUN npm ci
+
+CMD ["node", "index.js"]
 ```
 
