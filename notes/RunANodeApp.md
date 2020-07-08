@@ -29,4 +29,14 @@ http.createServer((req, res) => {
 ,listen(3000)
 console.log('...server started')
 ```
+### build the container
+```
+docker build -t my-node-app
+```
+
+### run the container, see whoIam
+```
+docker run --init --rm --publish 3000:3000 my-node-app whoami
+```
+... should print ```node``` as the node user is the user being used
 
