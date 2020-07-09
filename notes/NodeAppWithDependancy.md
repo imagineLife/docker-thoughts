@@ -6,6 +6,7 @@ const hapi = require('@hapi/hapi')
 
 async function start(){
   const server = hapi.server({
+    //LOCALHOST will break as a hard-loop
     host: "0.0.0.0",
     port: process.env.PORT || 3000
   })
@@ -112,4 +113,26 @@ RUN npm ci
 
 CMD ["node", "index.js"]
 ```
+### build the container
+```docker build -t noder-server-container```
+...now everything works as expected
 
+### run the container
+```
+docker run --init --rm --publish 3000:3000 noder-server-container
+```
+
+
+## Why publish instead of Expose
+- COULD write in the dockerfile 
+  - ``` Expose 3000 ```
+- this needs a flag
+  - build the container
+  - then run the container detatched, in the bg...
+    - ```docker run --init --rm --detatch noder-server-container ```
+    - detach runs it in the bg
+
+localhost:3000 is not exposed yet
+
+### get the port exposed
+```docker run --init --rm --detach -P node-server-container```
