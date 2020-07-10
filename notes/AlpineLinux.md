@@ -46,3 +46,17 @@ docker inspect node-alpine-container
 docker run --init --rm -p 3000:3000 node-alpine-container
 ```
 ... running container on alpine instead of debian
+
+
+### note on linux distributions
+- ubuntu is based on debian
+- production is smaller && more secure
+- other vesrions...
+	- rel - redhat enterprise linux
+	- mint
+	- sues (?)
+
+### no bash in alpine
+- uses ash
+	- minimalistic shell
+- 
