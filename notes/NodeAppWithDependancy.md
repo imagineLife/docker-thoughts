@@ -136,3 +136,7 @@ localhost:3000 is not exposed yet
 
 ### get the port exposed
 ```docker run --init --rm --detach -P node-server-container```
+
+### check which port is exposed
+```docker ps```
+see that the port INSIDE the container is 300, but the port FROM the outside is random...
