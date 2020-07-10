@@ -34,3 +34,15 @@ CMD ["node", "index.js"]
 ```
 docker build -t node-alpine-container
 ```
+
+### inspect container
+```
+docker inspect node-alpine-container
+```
+... shows how many bites the container is, around 86mb
+
+### run the container
+```
+docker run --init --rm -p 3000:3000 node-alpine-container
+```
+... running container on alpine instead of debian
