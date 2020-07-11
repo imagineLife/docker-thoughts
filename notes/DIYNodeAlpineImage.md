@@ -40,5 +40,15 @@ just alpine, node && npm
 ```
 FROM alpine:3.10
 RUN apk add --update nodejs npm
+
+## add a user in linux
+RUN addgroup -S node && add -S node -G node
+
+## connect to that user
+USER node
 ```
 
+### build the container
+```
+docker build -t smallest-node
+```
