@@ -150,6 +150,6 @@ ABOVE OVERVIEW OF USING CHROTT && COPYING OS COMMANDS
 
 
 
-
+### Copy 'cat' into chroot
 Get the ‘cat’ command into our new env
 ```cp /bin/cat bin```
