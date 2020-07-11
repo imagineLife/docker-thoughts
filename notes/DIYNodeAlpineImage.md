@@ -34,3 +34,11 @@ docker build -t node-container
 ```
 docker inspect node-container
 ```
+
+### new even smaller container
+just alpine, node && npm
+```
+FROM alpine:3.10
+RUN apk add --update nodejs npm
+```
+
