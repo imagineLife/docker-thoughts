@@ -3,6 +3,9 @@
 ```
 FROM alpine:3.10
 
+#apk is the alpine-package-manager
+RUN apk add --update nodejs npm
+
 USER node
 
 RUN mkdir /home/node/code
