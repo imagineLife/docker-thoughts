@@ -58,3 +58,9 @@ docker build -t smallest-node
 docker run --init --rm -p 3000:3000 -it smallest-node
 ```
 ... should return ```node``` user
+
+
+### inspect space of container
+```
+docker inspect smallest-node | jq 
+```
