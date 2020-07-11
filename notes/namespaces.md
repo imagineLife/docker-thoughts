@@ -53,18 +53,18 @@ ENTER these commands
 
 
 
-**UNSHARE HERE!!**
+## UNSHARE HERE!!
 exit out of the better-root
 ```exit```
 
-enter this command
+### unshare a bunch of things
 ```unshare --mount --uts --ipc --net --pid --fork --user --map-root-user chroot /better-root bash```
 
 Whats it do-ish?!
 - tell everything that I want to 'un'-share between this env & others
 - RUNS chroot in /better-root then runsh bash inside the dir after chrooting into it
 
-MORE CODE
+### mount some stuff...
 ```moount -t proc none /proc```
 ```mount -t sysfs none /sys```
 ```mount -t tmpfs none /tmp```
@@ -75,14 +75,13 @@ https://ss64.com/bash/mount.html
 -t indicates the file-system type
 
 
-NOW running this...
+### see what processes this unshared env can see
 ```ps aux```
 ...which shows list of processes that this env can see, IT cannot see any processes outside of itself :) Good news! It should return something like...
 ```USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  18508  3424 ?        S    11:17   0:00 bash
 root         9  0.0  0.1  34400  2844 ?        R+   11:18   0:00
 ``` 
-ps aux
 
 ONE WAY TO PROVE THIS, that the child cannot see the parent processes....
 1. open new terminal window
@@ -91,6 +90,9 @@ ONE WAY TO PROVE THIS, that the child cannot see the parent processes....
 4. get into the container with bash, using....
 ```docker exec -it docker-host /bin/bash```
 5. see ALL processes in the parent container using...
+
+### see the 'child' process from the parent process
+in the parent terminal (should be 2 terms, 1 @ parent 1 in better-root)
 ```ps aux```
 ...
 should return something like
@@ -101,10 +103,6 @@ root      7431  0.0  0.1  18508  3472 pts/0    S+   11:21   0:00 bash
 root      7441  0.6  0.1  18508  3452 pts/1    Ss   11:22   0:00 /bin/bash
 root      7451  0.0  0.1  34404  2896 pts/1    R+   11:22   0:00 
 ```
-
-Host can control children
-- see processes
-```ps aux```
 notice more processes than the child 'knows' about!
 
 ```kill 8675``` will kill the 'child' process on 8675
