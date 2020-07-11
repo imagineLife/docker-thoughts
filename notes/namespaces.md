@@ -30,8 +30,10 @@ docker exec -it docker-host bash
 [debootstrap](https://wiki.debian.org/Debootstrap)
 ```apt-get install debootstrap -y```
 
-debootstrap setsup a totally new change-rootable environment...
+### debootstrap setsup a totally new change-rootable environment...
 ```debootstrap --variant=minbase bionic /better-root```
+...
+- debootstrap is 'debian' bootstrap
 
 - minbase tells to download least amt of stuff necessary
 - bionic is kind of ubuntu
@@ -39,7 +41,7 @@ debootstrap setsup a totally new change-rootable environment...
 ... gets the bare minimunm stuff (filesystem stuff) needed to run a debian-based ubuntu
 ... should end terminal output with ```Base system installed successfully```
 
-SEE the new bin tools in this dir
+### SEE the new bin tools in this /better-root dir
 ENTER these commands
 ```cd better-root```
 ```chroot . bash```
