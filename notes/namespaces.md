@@ -1,13 +1,10 @@
 
-KERNEL FEAT 2: NAMESPACES
+## KERNEL FEAT 2: NAMESPACES
 this is about un-sharing process capabilities, controlling the flow of capabilities in-between processes
 
-problem with chroot alone.
+### problem with chroot alone
 chroot is concerned with isolating file-system 'roots'
 BUT IF 2 chrooted envs are next to one-another, they can see each others processes
-
-- list processes
-``ps``
 
 companyA process can KILL companyB processes
 
@@ -15,13 +12,22 @@ Introducing name-spaces to restrict capabilities
 
 using UNSHARE command
 
-RUN THESE COMMANDS, get a new env up && running
-in the parent container
-# updates available packages I can use
+### RUN THESE COMMANDS, get a new env up && running
+- in new terminal
+- open another shell into the same parent container
+```
+docker exec -it docker-host bash
+```
+
+### see running processes from new container
+```ps aux```
+... should include the COMMAND ```tail -f secret.txt``` which is running in the OTHER shell for the SAME container
+
+### updates available packages I can use
 ```apt-get update```
 
-# a tool
-## https://wiki.debian.org/Debootstrap
+#### a tool
+[debootstrap](https://wiki.debian.org/Debootstrap)
 ```apt-get install debootstrap -y```
 
 debootstrap setsup a totally new change-rootable environment...
