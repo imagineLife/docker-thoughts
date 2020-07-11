@@ -1,18 +1,17 @@
-
-KERNEL FEAT 3: CGroups
+## KERNEL FEAT 3: CGroups
 invented @ google
-THE PROBLEM
+### THE PROBLEM
 - running multiple processes
     - (web-servers, **not** on separate vms)
 - BUT if google-maps team writes a bad process that clogs the cpu...
 	- might kill other google process (google docs etc)
 
-THE SOLUTION
+### THE SOLUTION
 - NEED to control how much cpu each process gets
 
 HERE, this cGroups doc reviewes ram && cpu. but theres much more...
 
-RUN THIS inside the ubuntu 'container', the 'better-root' from prev docs...
+### RUN THIS inside the ubuntu 'container', the 'better-root' from prev docs...
 ```apt-get install -y cgroup-tools htop```
 
 ### CGroup
@@ -36,8 +35,8 @@ enter the same unshared environment
 ```unshare --mount --uts --pic --net --pid --fork --user --map-root-user chroot /better-root bash```
 
 
-find the bash process of the child container, enter this in terminal 
-ps aux
+### find the bash process of the child container, enter this in terminal 
+```ps aux```
 ...show ALL processes, even child processes
 - the 'bash' command, under the COMMAND column, directly below the unshare... command, is the child process we want. Find the Process id under the PID column (7501 or something)
 
