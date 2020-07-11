@@ -42,7 +42,7 @@ FROM alpine:3.10
 RUN apk add --update nodejs npm
 
 ## add a user in linux
-RUN addgroup -S node && add -S node -G node
+RUN addgroup -S node && adduser -S node -G node
 
 ## connect to that user
 USER node
