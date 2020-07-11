@@ -24,3 +24,13 @@ CMD ["node", "index.js"]
 ### inspect alpine
 ```docker inspect alpin 3.10 | jq```
 ...spits out metadata about alpine
+
+### build the container
+```
+docker build -t node-container
+```
+
+### inspect the container
+```
+docker inspect node-container
+```
