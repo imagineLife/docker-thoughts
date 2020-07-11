@@ -6,9 +6,9 @@ this is about un=sharing file-system content
 do all of this INSIDE A DOCKER CONTAINER!
 even though this portion is ABOUT the make-up of containers, this step is to USE a UNIX-based OS, not the mac linux-based os
 
-setup a docker container to use...
+### setup a docker container to use...
 ```
-docker run -it --name docker-host --rm --privileged ubuntuLbionic
+docker run -it --name docker-host --rm --privileged ubuntu:bionic
 ```
 
 - sets root directory of a new process
