@@ -1,23 +1,55 @@
-## DIYNodeAlpineImage
-### dockerfile
+## Leveraging a Multi-Stage Build
+How can this be even smaller?
+"What DON'T i need in production?"
+- i.e. npm (_not a GREAT example, but the point of useless dependencies_)
+
+multi-stage builds use multiple FROM statements in the dockerfile
+
+### docker multi-stage build
+- copy the output of a BUILT container
+	- 1st container is to build stuff
+	- 2nd container is RESULT of 1st container + more
 ```
+##
+## BUILD CONTAINER 1
+##
+# Include the kitchen sink, call it 'build-stage' for reference later in dockerfile
+FROM node:12-stretch AS build-stage
+
+WORKDIR /build
+
+# moved from prev. example, less node-user detail
+COPY package-lock.json package.json ./
+
+RUN npm ci
+
+#copy everything from this directory to the container directory
+COPY . .
+
+##
+## BUILD CONTAINER 2, the 'runtime stage'
+##
 FROM alpine:3.10
 
 #apk is the alpine-package-manager
-RUN apk add --update nodejs npm
+RUN apk add --update nodejs
 
+# add new node user && node group
+RUN addgroup -S node && adduser -S node -G node
+
+# use user node
 USER node
 
 RUN mkdir /home/node/code
 
 WORKDIR /home/node/code
 
-COPY --chown=node:node package-lock.json package.json ./
+##
+##copy the container 1 above
+##
+COPY --from=build-stage
 
-RUN npm ci
-
-COPY --chown=node:node . .
-
+#run node
 CMD ["node", "index.js"]
 ```
 
