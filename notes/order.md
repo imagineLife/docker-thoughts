@@ -12,3 +12,5 @@
 12. NodeAppWithADependancy
 13. Apline Linux
 14. DIYNodeAlpineImage
+15. LeveragingStages
+16. StaticAssets
