@@ -52,3 +52,8 @@ USER node
 ```
 docker build -t smallest-node
 ```
+
+### check who i am in container
+```
+docker run --init --rm -p 3000:3000 -it smallest-node
+```
