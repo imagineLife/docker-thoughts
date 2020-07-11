@@ -17,3 +17,7 @@ COPY --chown=node:node . .
 
 CMD ["node", "index.js"]
 ```
+
+### inspect alpine
+```docker inspect alpin 3.10 | jq```
+...spits out metadata about alpine
