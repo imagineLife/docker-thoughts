@@ -34,14 +34,12 @@ Status: Downloaded newer image for ubuntu:bionic
 run in any terminal/emulator (zsh && bash work) 
 
 now I’m @ the root of the new container
-check which linux env im in 
-
+### check cur linux env
 ```cat /etc/issue```
 - prints ```ubuntu 18.04.3```, which linux env we are in!
-
 this can also be done in powershell, windows terminal
  
-**see entire system**
+### see entire system
 ```ls```
 ...should return something like...
 ```
@@ -49,9 +47,7 @@ bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
 ```
 
-
-
-**MAKING A NEW ROOT**
+### MAKING A NEW ROOT
 make a new folder to put my container in
 ```mkdir my-new-root```
 ```cd my-new-root```
@@ -62,10 +58,10 @@ there is not bash in there
 
 need to copy OS inside the new dir, my-new-root
 
-**make a bin folder**
+### make a bin folder
 ```mkdir my-new-root/bin```
 
-**copy the existing bin into my-new-root**
+### copy the existing bin into my-new-root
 ```cp bin/bash my-new-root/bin```
 
 show the new bin folder,
@@ -75,22 +71,23 @@ show the new bin folder,
 STILL can’t run bash
 need libraries that the processes && commands need to run
 
-- show needed dependencies of bash
+### show needed dependencies of bash
 ```ldd bin/bash```
 ...should return something like...
-
-	```linux-vdso.so.1 (0x00007fff5f5e1000)
+```
+linux-vdso.so.1 (0x00007fff5f5e1000)
 	libtinfo.so.5 => /lib/x86_64-linux-gnu/libtinfo.so.5 (0x00007f1b0eb75000)
 	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f1b0e971000)
 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f1b0e580000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f1b0f0b9000)```
+	/lib64/ld-linux-x86-64.so.2 (0x00007f1b0f0b9000)
+```
 
 we need this stuff.
 
-- make 2 more directories, lib && lib64
+### make 2 more directories, lib && lib64
 ```mkdir my-new-root/lib{,64}```
 
-- show all files in my-new-root
+### show all files in my-new-root
 cd into my-new-root
 ls the dir
 	… should show 
@@ -99,7 +96,7 @@ ls the dir
 notice the ldd paths listed in the ldd command
 the dependencies that have paths need to be copied into my-new-proj
 
-- copy dependencies from ldd to new-proj
+### copy dependencies from ldd to new-proj
 1. cp
     1. highlight && paste the 3 paths from libtinfo.so, libdl.so, && libc.so
     2. PASTE after cp
@@ -108,7 +105,7 @@ the dependencies that have paths need to be copied into my-new-proj
 ```cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libc.so.6 /lib64/ld-linux-x86-64.so.2 my-new-root/lib```
 
 
-Check that dependencies have been copied
+### Check that dependencies have been copied
 ```cd my-new-root```
 ```ls lib```
 	… should show 3 things, the libc, libel && libtinfo
@@ -116,28 +113,25 @@ Check that dependencies have been copied
 - copy && prepare lib64 file with file from ldd output
 ```cp /lib64/ld-linux-x86-64.so.2 lib64/```
 
-**NOW can go into new env**
+### changeroot into my-new-root
 - Enter new env && open bash terminal
 ```chroot my-new-root/ bash```
 
-- see what dir im im
+### see what dir im im
 ```pwd```
 ...shows /...
 bash thinks i’m in the root of the system! 
 this is part of the container goal
 
-- see what files are in my env
+### see what files are in my env
 ```ls```
 notice no files!
 
-- get out of chroot
+### get out of chroot
 ```exit```
 
 
-- prepare environment 
-… copy files like we just did into my-new-root/lib
-
-
+### Copy 'ls' into chroot
 COPY the ls command from parent 'container' to 'my-new-container'
 ```cp /bin/ls my-new-root/bin```
 
