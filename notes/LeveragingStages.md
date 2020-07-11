@@ -96,3 +96,4 @@ docker run --init --rm -p 3000:3000 -it smallest-node
 ```
 docker inspect smallest-node | jq 
 ```
+... 39MB! this is smaller without npm
