@@ -6,6 +6,7 @@ FROM node:12-stretch
 USER node
 
 # clone index from sibling into container
+# change-ownership also
 COPY --chown=node:node index.js index.js
 
 # run this in container on 'docker run'
