@@ -27,6 +27,6 @@ console.log('server started!!');
 
 
 	RUNNING
-	docker run --init node-app
-	note: --init lets 'tini' allow command+c to close the service
+	docker run --init  --rm --publish 3000:3000 node-app
+	notes: --init lets 'tini' allow command+c to close the service
 */
