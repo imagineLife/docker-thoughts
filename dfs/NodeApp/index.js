@@ -24,4 +24,9 @@ console.log('server started!!');
 	 ---> 041bdc1a7cc5
 	Successfully built 041bdc1a7cc5
 	Successfully tagged node-app:latest
+
+
+	RUNNING
+	docker run --init node-app
+	note: --init lets 'tini' allow command+c to close the service
 */
