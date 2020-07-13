@@ -11,16 +11,9 @@ USER node
 # all following commands will run from this directory
 WORKDIR /home/node/code
 
-# clone index from sibling into container
+# clone everything from here into the container
 # change-ownership also
-COPY --chown=node:node index.js index.js
-
-# SIMILAR to COPY...
-# ADD --chown=node:node index.js index.js
-# add will unzip things that it gets...
-# add can get things from the web
-# copy is most useul when running local content
-# use add for network or unzipping things
+COPY --chown=node:node . .
 
 # run this in container on 'docker run'
 CMD ["node", "index.js"]
