@@ -1,35 +1,41 @@
-const http = require('http');
+// more-or-less the example code from the hapi-pino repo
+const hapi = require("@hapi/hapi");
 
-http.createServer((req, res) => {
-	console.log('Server Request Received!');
-	res.end('res end!!', 'utf-8');
-}).listen(3000);
-console.log('server started!!');
+//server config
+const serverObj = {
+  host: "0.0.0.0",
+  port: process.env.PORT || 3000
+}
 
-/*
-	Building with sibling docker-file
+const rootPathHandlerObj = {
+  method: "GET",
+  path: "/",
+  handler() {
+    return { success: true };
+  }
+}
 
-	docker build -t node-app .
+// for registering hapi-pino
+const hapiPinoObj = {
+  plugin: require("hapi-pino"),
+  options: {
+    prettyPrint: true
+  }
+}
 
-	should return...
+async function start() {
+  const server = hapi.server(serverObj);
 
-	Sending build context to Docker daemon  3.072kB
-	Step 1/3 : FROM node:12-stretch
-	 ---> 1fa6026dd8bb
-	Step 2/3 : COPY index.js index.js
-	 ---> 724b551c7cef
-	Step 3/3 : CMD ["node", "index.js"]
-	 ---> Running in 7624c2fab0c1
-	Removing intermediate container 7624c2fab0c1
-	 ---> 041bdc1a7cc5
-	Successfully built 041bdc1a7cc5
-	Successfully tagged node-app:latest
+  server.route(rootPathHandlerObj);
 
+  await server.register(hapiPinoObj);
 
-	RUNNING
-	docker run --init  --rm --publish 3000:3000 node-app
-	
-	notes: 
-		--init lets 'tini' allow command+c to close the service
+  await server.start();
 
-*/
+  return server;
+}
+
+start().catch(err => {
+  console.log(err);
+  process.exit(1);
+});
