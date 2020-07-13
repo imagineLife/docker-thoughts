@@ -5,7 +5,10 @@ FROM node:12-stretch
 # put this HERE to run ALL following commands as node user
 USER node
 
-# /home/node is the hom dir of the node user
+# /home/node is the home dir of the node user
+# this sets the 'working' directory of the project
+# the copy command stores index.js in this /home/node/code dir
+# all following commands will run from this directory
 WORKDIR /home/node/code
 
 # clone index from sibling into container
