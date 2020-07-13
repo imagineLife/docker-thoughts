@@ -42,9 +42,11 @@ start().catch(err => {
 
 /*
 	Steps to work with docker...
+
 	1. npm init -y
 	2. build the docker container
 	  - docker build -t node-hapi-box .
 	3. run the project in docker
 	  - docker run --init --rm --publish 3000:3000 node-hapi-box
+
 */
