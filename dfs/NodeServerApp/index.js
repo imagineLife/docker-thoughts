@@ -1,4 +1,3 @@
-// more-or-less the example code from the hapi-pino repo
 const hapi = require("@hapi/hapi");
 
 //server config
