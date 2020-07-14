@@ -11,7 +11,8 @@ COPY --chown=node:node package-lock.json package.json ./
 
 RUN npm ci 
 
-# Now whenever a file is changed in the project (js)
+# NOW
+# whenever a file is changed in the project (js)
 # ONLY from this command forward get re-built
 # LAYERING 'skips' the previously cached commands (layers)
 COPY --chown=node:node . .
