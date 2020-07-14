@@ -2,6 +2,8 @@ const hapi = require("@hapi/hapi");
 
 //server config
 const serverObj = {
+	// cannot use localhost here
+	// breaking infinite call loop if-so
   host: "0.0.0.0",
   port: process.env.PORT || 3000
 }
