@@ -5,7 +5,7 @@ const serverObj = {
 	// cannot use localhost here
 	// breaking infinite call loop if-so
   host: "0.0.0.0",
-  port: process.env.PORT || 3000
+  port: process.env.PORT || 3321
 }
 
 const rootPathHandlerObj = {
@@ -43,12 +43,16 @@ start().catch(err => {
 
 
 /*
-	Steps to work with docker...
-
-	1. npm init -y
-	2. build the docker container
-	  - docker build -t node-hapi-box .
-	3. run the project in docker
-	  - docker run --init --rm --publish 3000:3000 node-hapi-box
+  NOTICING layer advantages
+  1. build the app
+    docker build -t layered-node-app .
+  2. SEE all steps succeed (9/9) in terminal output
+  3. CHANGE something in this index.js (the port)
+  4. re-run the build command
+    docker build -t layered-node-app .
+  5.SEE steps 1-through-6 SKIP and note...
+    '---> Using cache'
+  ...
+  THIS is leveraging Cached layers
 
 */
