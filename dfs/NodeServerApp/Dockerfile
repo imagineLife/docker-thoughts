@@ -22,5 +22,8 @@ COPY --chown=node:node . .
 #ci adheres to package-lock.json!!
 RUN npm ci 
 
+#...meant for 'documentation'...?!...not the readme...!?
+EXPOSE 3000
+
 # run this in container on 'docker run'
 CMD ["node", "index.js"]
