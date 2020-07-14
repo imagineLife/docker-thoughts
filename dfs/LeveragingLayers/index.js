@@ -55,4 +55,10 @@ start().catch(err => {
   ...
   THIS is leveraging Cached layers
 
+
+  CONCERNS:
+  - Security patches...
+    what if when a npm comes up with a new version?
+    the cache won't re-run npm i :(
+
 */
