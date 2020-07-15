@@ -43,10 +43,7 @@ start().catch(err => {
 
 
 /*
-
-TRY inspecting node-alpine
-docker inspect alpine;3.10 | jq
-
-
-
+  
+  Alpine + node + npm is ~50mb
+  
 */
