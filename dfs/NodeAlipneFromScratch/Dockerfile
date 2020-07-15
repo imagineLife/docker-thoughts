@@ -1,6 +1,9 @@
 #5.6MB-ish alpine image
 FROM alipne:3.10
 
+#update before, get node && npm
+RUN apk add --update nodejs npm
+
 USER node
 
 RUN mkdir /home/node/code
