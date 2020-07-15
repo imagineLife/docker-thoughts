@@ -43,7 +43,11 @@ start().catch(err => {
 
 
 /*
-CHECK OUT HTE SIZE of the alpine container
+CHECK OUT THE SIZE of the alpine container
 - build the container
 - docker inspect container-name-here
+
+
+
+
 */
