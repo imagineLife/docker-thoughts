@@ -43,22 +43,7 @@ start().catch(err => {
 
 
 /*
-  NOTICING layer advantages
-  1. build the app
-    docker build -t layered-node-app .
-  2. SEE all steps succeed (9/9) in terminal output
-  3. CHANGE something in this index.js (the port)
-  4. re-run the build command
-    docker build -t layered-node-app .
-  5.SEE steps 1-through-6 SKIP and note...
-    '---> Using cache'
-  ...
-  THIS is leveraging Cached layers
-
-
-  CONCERNS:
-  - Security patches...
-    what if when a npm comes up with a new version?
-    the cache won't re-run npm i :(
-
+CHECK OUT HTE SIZE of the alpine container
+- build the container
+- docker inspect container-name-here
 */
