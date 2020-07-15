@@ -1,8 +1,12 @@
-#5.6MB-ish alpine image
+# 5.6MB-ish alpine image
 FROM alipne:3.10
 
 #update before, get node && npm
 RUN apk add --update nodejs npm
+
+# add node user in group node 
+# set remainder of file to run as node user
+RUN addgroup -S node && adduser -S node -G node
 
 USER node
 
