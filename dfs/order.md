@@ -5,3 +5,5 @@
 5.LeveragingLayers
 6.AlpineLinux
 7.NodeAlpineFromScratch
+8.MultiLayers
+9.LayeredStaticSite
