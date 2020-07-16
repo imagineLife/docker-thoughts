@@ -6,4 +6,4 @@ RUN npm ci && npm run build
 
 FROM nginx:1.17
 #nginx file is specific to nginx setup
-COPY --from=build-step /app/build /user/share/nginx/html
+COPY --from=build-step /app/build /usr/share/nginx/html
