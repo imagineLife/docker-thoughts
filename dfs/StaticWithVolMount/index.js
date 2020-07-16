@@ -1,50 +1,23 @@
-const hapi = require("@hapi/hapi");
+const fs = require("fs").promises;
+const path = require("path");
 
-//server config
-const serverObj = {
-	// cannot use localhost here
-	// breaking infinite call loop if-so
-  host: "0.0.0.0",
-  port: process.env.PORT || 3000
+const dataPath = path.join(process.env.DATA_PATH || "./data.txt");
+
+const writeTo = data => {
+  fs.writeFile(dataPath, data.toString()).catch(console.error);
+};
+
+const handleReadFile = buffer => {
+  const data = buffer.toString();
+  console.log(data);
+  writeTo(+data + 1);
 }
 
-const rootPathHandlerObj = {
-  method: "GET",
-  path: "/",
-  handler() {
-    return { success: true };
-  }
+const handleE = e => {
+  console.log("file not found, writing '0' to a new file");
+  writeTo(0);
 }
 
-// for registering hapi-pino
-const hapiPinoObj = {
-  plugin: require("hapi-pino"),
-  options: {
-    prettyPrint: true
-  }
-}
-
-async function start() {
-  const server = hapi.server(serverObj);
-
-  server.route(rootPathHandlerObj);
-
-  await server.register(hapiPinoObj);
-
-  await server.start();
-
-  return server;
-}
-
-start().catch(err => {
-  console.log(err);
-  process.exit(1);
-});
-
-
-/*
-  Create-React-App
-  build the app
-  copy the files into nGinX container
-  nGinX will serve the static assets for us
-*/
+fs.readFile(dataPath)
+  .then(handleReadFile)
+  .catch(handleE);
