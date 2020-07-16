@@ -43,15 +43,8 @@ start().catch(err => {
 
 
 /*
-  LAYERING
-  multiple containers
-  "What do i NOT need in production?!"
-  ... npm (as a trivial example, not really a real-life best-practice perhaps)
-  
-  BUILD IT using 
-  docker build -t layered-container .
-
-  RUN IT
-  docker run --init --rm -p 3000:3000 -it layered-container
-
+  Create-React-App
+  build the app
+  copy the files into nGinX container
+  nGinX will serve the static assets for us
 */
