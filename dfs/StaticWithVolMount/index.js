@@ -1,10 +1,11 @@
+// https://nodejs.org/dist/latest-v12.x/docs/api/fs.html#fs_fs_promises_api
 const fs = require("fs").promises;
 const path = require("path");
 
-const dataPath = path.join(process.env.DATA_PATH || "./data.txt");
+const DATA_PATH = path.join(process.env.DATA_PATH || "./data.txt");
 
 const writeTo = data => {
-  fs.writeFile(dataPath, data.toString()).catch(console.error);
+  fs.writeFile(DATA_PATH, data.toString()).catch(console.error);
 };
 
 const handleReadFile = buffer => {
@@ -18,6 +19,6 @@ const handleE = e => {
   writeTo(0);
 }
 
-fs.readFile(dataPath)
+fs.readFile(DATA_PATH)
   .then(handleReadFile)
   .catch(handleE);
