@@ -1,3 +1,6 @@
+# FIRST install c-r-a project...
+# npx --ignore-existing create-react-app static-assets-project --template typescript --use-npm
+  
 # "BUILD" stage 
 # get image
 # NAME this image build-box for reference later in file
