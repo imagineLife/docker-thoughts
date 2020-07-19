@@ -32,3 +32,10 @@ docker run -d --network=app-net -p 27017:27017 --name=mongo-box --rm mongo:3
 docker ps
 ```
 ... should show the container running
+
+### start other container, mongo child
+```
+docker run -it --network=app-net --rm mongo:3 mongo --host mongo-box
+```
+
+Here, we see 'no mystery' of docker networking.
