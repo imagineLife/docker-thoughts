@@ -16,3 +16,10 @@ docker inspect <container-name>
 ```
 
 - outputs info about the container in the cli
+
+### MORE
+
+- run in background, 'detached', gets the `d` flag
+  `docker run -dit jturpin/hollywood hollywood`
+- kill a container is `docker kill <container-name>`
+- kill all running container `docker kill $(docker ps -q)`
