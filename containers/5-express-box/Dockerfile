@@ -13,3 +13,6 @@ CMD ["node", "index.js"]
 # docker run --init
 # --init is tini backward, passing input signals to process
 # so that the container will kill on command+C
+
+# Expose the docker port to host
+# docker run --init --rm --publish 3000:3000 http-server
