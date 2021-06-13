@@ -27,3 +27,5 @@ docker inspect <container-name>
 - docker exec starts a process on a running container
 - see whats running in a container with `docker exec <container-name> ps aux`
 - go into a container in the cli with `docker exec -it <container-name> bash`
+- see changes of docker image with `docker history <docker-image>`
+  - ex. `docker history node:14-stretch`
