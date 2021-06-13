@@ -29,3 +29,14 @@ docker inspect <container-name>
 - go into a container in the cli with `docker exec -it <container-name> bash`
 - see changes of docker image with `docker history <docker-image>`
   - ex. `docker history node:14-stretch`
+- `docker container prune` - removes all containers
+- `docker image prune` - removes all images
+- `docker search <some-name-here>` finds docker images from the image repo
+
+### Run a mongo image in the gb
+
+`docker run -dit mongo`
+
+### see all processes in a container
+
+`docker top <container-name>`
