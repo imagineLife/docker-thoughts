@@ -14,12 +14,11 @@ COPY --chown=node:node index.js index.js
 CMD ["node", "index.js"]
 
 # build container with 
-# docker build -t http-server .
+# docker build -t safe-server .
 
-# run with 
-# docker run --init
-# --init is tini backward, passing input signals to process
-# so that the container will kill on command+C
-
+# run with ...
 # Expose the docker port to host
-# docker run --init --rm --publish 3000:3000 http-server
+# docker run --init --rm --publish 3000:3000 safe-server
+
+## Check app user with
+# docker run --init --rm --publish 3000:3000 safe-server whoami
