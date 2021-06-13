@@ -1,10 +1,12 @@
 FROM node:14-stretch
 
 # set as the "node" user
+# image comes with a user "node"
+# in a user-group called "node"
 USER node 
 
 #COPY from host source TO container destination
-COPY  --chown=node:node index.js index.js
+COPY --chown=node:node index.js index.js
 
 # run the server
 CMD ["node", "index.js"]
