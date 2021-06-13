@@ -7,7 +7,7 @@ FROM node:14-stretch
 USER node 
 
 #COPY from host source TO container destination
-# chown gets user nod3 && group node
+# chown gets user node && group node
 COPY --chown=node:node index.js index.js
 
 # run the server
