@@ -23,3 +23,7 @@ docker inspect <container-name>
   `docker run -dit jturpin/hollywood hollywood`
 - kill a container is `docker kill <container-name>`
 - kill all running container `docker kill $(docker ps -q)`
+- docker RUN starts a new container
+- docker exec starts a process on a running container
+- see whats running in a container with `docker exec <container-name> ps aux`
+- go into a container in the cli with `docker exec -it <container-name> bash`
