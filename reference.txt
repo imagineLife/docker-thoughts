@@ -1,0 +1,77 @@
+https://btholt.github.io/complete-intro-to-containers/
+
+Docker CLI CheatSheet
+Running Containers
+Start Container from Image
+runs image pulled from the docker hub
+docker run node:14-stretch
+
+Start a NAMED Container from Image
+give a friendly name usable through docker cli
+docker run —-name mynodebox node:14-stretch
+
+Start a Container & Open Terminal
+open the cli inside the new container
+-i interactive terminal mode
+-t start a pseudo-tty, a pseudo-terminal
+docker run —-name mynodebox -it node:14-stretch
+
+Start + Include port mapping
+internal container port to host port
+docker run -p containerport:hostport node:14-stretch
+docker run -p 8000:8000 node:14-stretch
+
+Start Container in the Background
+perhaps the most nomal use-case for F.E folks?
+docker run -d node:14-stretch
+
+Start + Assign Hostname
+
+docker run —-hostname nodersedrver node:14-stretch
+
+Map a host directory (volume) to container
+used to map data between container and host
+docker run -v HOSTDIR:CONTAINERDIR node:14-stretch
+docker run -v /data/node-data:/data node:14-stretch
+
+Map a host directory (volume) to container
+used to map data between container and host
+docker run -v HOSTDIR:CONTAINERDIR node:14-stretch
+docker run -v /data/node-data:/data node:14-stretch
+
+Managing Local Containers
+Show all running containers
+docker ps
+
+Show all containers, running or not
+docker ps -a
+
+DELETE a container
+docker rm containername
+
+DELETE a running container
+docker rm -f containername
+
+DELETE all stopped containers
+docker container prune
+
+STOP a running container
+docker stop mynodebox
+
+START a stopped container
+docker start mynodebox
+
+COPY file from container to host
+docker cp containerfile:dir hostfile
+docker cp mynodebox:data.json nowOnTheHost.json
+
+COPY file from host to container
+docker cp hostfile container:filelocation
+docker cp hostData.json mynodebox:data/apidata.json
+
+RENAME a continaer
+docker rename mynodebox nodebox
+Create image from container
+docker commit containername
+docker commit nodebox
+
