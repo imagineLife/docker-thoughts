@@ -7,3 +7,8 @@ FROM node:14-stretch
 
 # Tell the container what to do on startup
 CMD ["node", "-e", "console.log(\"water\")"]
+
+
+# ADD A TAG on build!
+# docker build --tag nodebox .
+# THEN can run with docker run nodebox
