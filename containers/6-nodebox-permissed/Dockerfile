@@ -9,6 +9,7 @@ USER node
 # sets WHERE the COPY command will put the code
 # here, the home directory of the node user
 # without this, the copy command puts the code in the root of the directory structure
+# even when the dir is not present, the dir will be auto-created
 WORKDIR /home/node/code
 
 #COPY from host source TO container destination
