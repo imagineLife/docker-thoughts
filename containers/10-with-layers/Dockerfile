@@ -14,6 +14,7 @@ RUN npm ci
 
 # copy the rest of the project
 # takes advantage of caching at all above layers when package && npm install dont change
+# NOW, npm ci will ONLY run when package-lock && package.json change
 COPY --chown=node:node .
 
 EXPOSE 3000
