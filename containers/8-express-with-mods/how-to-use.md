@@ -29,4 +29,6 @@ docker run --init --rm --publish 1234:3000 express-box
 
 ## SOLUTION
 
--
+- have the node use run _mkdir_ for the dir that will become the _WORKDIR_
+  - this will make the _owner_ of the workdir the "node" user
+  - this allows npm i to be done by the node user & save the mods to the container
