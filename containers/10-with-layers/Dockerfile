@@ -8,6 +8,7 @@ WORKDIR /home/node/code
 
 # JUST copy package files, take advantage of layering
 # ONLY update these when the deps change
+# A SMALL PROBLEM - npm minor updates might not get picked up due to this caching
 COPY --chown=node:node package-lock.json package.json ./
 
 RUN npm ci
