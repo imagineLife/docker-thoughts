@@ -21,7 +21,7 @@ RUN npm ci
 # docker run --init --rm --detach -P express-box
 # this makes docker pick a random port to expose on the host - perhaps inconvenient
 # SOME FOLKS use this EXPOSE line as a type of documentation in the dockerfile
-# EXPOSE 3000
+EXPOSE 3000
 
 # run the server
 CMD ["node", "index.js"]
