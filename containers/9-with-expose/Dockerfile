@@ -19,6 +19,7 @@ RUN npm ci
 #  is through the cli when running the container using hte --publish flash
 # to LEVERAGE this , docker could be run with the '-P' flag & detach flag...
 # docker run --init --rm --detach -P express-box
+# this makes docker pick a random port to expose on the host - perhaps inconvenient
 # SOME FOLKS use this EXPOSE line as a type of documentation in the dockerfile
 # EXPOSE 3000
 
