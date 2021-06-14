@@ -3,7 +3,7 @@
 FROM alpine:3.12
 
 # TOTAL IMAGE SIZE
-# 52.9MB
+# 59.3MB
 
 # alpine package manager
 # unversioned, get the 'latest' node && npm
