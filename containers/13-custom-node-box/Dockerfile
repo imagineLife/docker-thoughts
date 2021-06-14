@@ -1,6 +1,6 @@
 #  alpine size 
 # 5.34MB
-FROM alpine:3.10
+FROM alpine:3.12
 
 # TOTAL IMAGE SIZE
 # 52.9MB
