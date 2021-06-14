@@ -1,11 +1,5 @@
 ## Using a more complicated node server
 
-On the host initialize the dir that includes the dockerfile as an npm repo
-
-```
-npm init -y
-```
-
 ## Build this into an image with a tag
 
 ```bash
@@ -15,7 +9,7 @@ docker build -t express-box .
 ## Run the image
 
 ```bash
-docker run --init --rm --publish 3000:1234 express-box
+docker run --init --rm --publish 1234:3000 express-box
 ```
 
 - init
