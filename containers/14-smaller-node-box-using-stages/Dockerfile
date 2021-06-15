@@ -27,3 +27,9 @@ RUN mkdir /home/node/code
 WORKDIR /home/node/code
 COPY --from=buildstage --chown=node:node /build .
 CMD ["node", "index.js"]
+
+# BUILDABLE with something like...
+# docker build -t layer-box .
+
+# RUNNABLE with something like...
+# docker run --init -rm -p 1234:3000 -it layer-box
