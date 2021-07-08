@@ -70,3 +70,6 @@ should return something like...
 ```bash 
 mongo --username db_admin --password --authenticationDatabase admin 
 ```
+
+
+db.createUser({user:"m103-application-user",pwd:"m103-application-pass", roles:[{db:"applicationData", role:'readWrite'}]})
