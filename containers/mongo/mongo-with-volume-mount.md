@@ -73,7 +73,6 @@ show dbs
 after the `show dbs` command, we could be expecting to see the `water` db listed.  
 The `water` db is gone.  
 The data, alongside all other contents of the container, are gone when the container is removed.  
- 
 
 ## A Solution
 Here, spin up a docker container that runs a mongo server where the data is hosted _outside the container_, on the host machine's desktop. For this, we leverage a [Docker Volume Mount](https://docs.docker.com/storage/volumes/).
@@ -93,7 +92,56 @@ sudo mkdir mongo-data
 ### Run a container with a volume mount
 Next, use the `-v` flag and value to "point" the internal data directory to an external directory.  
 As a note, the default data directory that mongo "looks for" is `/data/db`.  
-Here, the container will "know" to look for a different file in place of the container's internal `/data/db`.
+Here, the container will "know" to look for a different file in place of the container's internal `/data/db`. The syntax that gets added to the `docker run` command for "mapping" the internal directory of the container to the host machine is `-v <host-machine-path>:<container-path>`. In this case, the new command will look like `-v ${PWD}/mongo-data:/data/db`.  
+
 ```bash
 	docker run --name mdb -v ${PWD}/mongo-data:/data/db -d mongo
+```
+
+### Add some data and watch it persist 
+Here, add a doc to a new collection in a new db. 
+```bash
+# enter a shell in the container
+docker exec -it mdb bash
+
+# start a mongo cli instance in the container
+mongo
+
+# create a db
+use water
+
+# add a doc to a new collection in the db
+db.melon.insertOne({juice: 'box'})
+
+# see the doc
+db.melon.find()
+
+# should return a cli js object version of the doc
+```
+Now, kill & restart the container
+```bash
+# exit out of the mongo cli
+exit
+
+# exit out of the container cli
+exit
+
+# stop & remove the container
+docker container stop mdb
+docker container rm mdb
+```
+Now, re-introduce and restart the container.  
+Validate that the data persists after a killed & reintroduced container. 
+
+```bash
+# start the container
+docker run --name mdb -v ${PWD}/mongo-data:/data/db -d mongo
+
+# enter a shell in the container
+docker exec -it mdb bash
+
+# start a mongo cli instance in the container
+mongo
+
+show dbs
 ```
