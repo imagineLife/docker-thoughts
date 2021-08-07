@@ -71,5 +71,7 @@ should return something like...
 mongo --username db_admin --password --authenticationDatabase admin 
 ```
 
-
+```
 db.createUser({user:"m103-application-user",pwd:"m103-application-pass", roles:[{db:"applicationData", role:'readWrite'}]})
+```
+
