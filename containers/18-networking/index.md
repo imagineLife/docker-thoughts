@@ -44,5 +44,10 @@ d53803487bb3   bridge        bridge    local
 db2de287c236   host          host      local
 1786993f12c5   none          null      local
 (base) Jakes-4:18-networking Jake$ 
+```
 
+## Spin up and connect a container to the network
+```bash
+# do it
+docker run -d --network=backend-web -p 27017:27017 --name=mongo-box --rm mongo:4
 ```
