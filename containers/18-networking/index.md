@@ -25,4 +25,5 @@ Below, though, a custom network will be created
 ## Using Custom Networks Is Better
 According to [Docker networking docs](https://docs.docker.com/network/bridge/), there are notable differences between user-defined networks and the built-un bridge network:  
 - The default bridge network only allows containers to talk using IP addresses
+- containers share env vars when shared via the default network, which can get complex to figure out where env vars are declared and which containerized apps are leveraging which env vars
 - Explicitly defining container networking orchestration can simplify networking bugs, as all containerscreated ion the same docker instance are all, by default, leveraging the default `bridge` network. Perhaps a container providing some infrequent analytics service against a fellow `mongo-box` container. This `db-analytics` container is running alongside the `mongo-box` container and also the `api-box` container. If a "network blip" happens outside of a docker network, debugging the cause of this could be more complex than if those 3 containers were all on an explicitly defined `backend-web` network.
