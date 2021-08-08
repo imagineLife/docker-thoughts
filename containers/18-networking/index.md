@@ -46,8 +46,27 @@ db2de287c236   host          host      local
 (base) Jakes-4:18-networking Jake$ 
 ```
 
-## Spin up and connect a container to the network
+## Spin up and connect a few container to the network
+### The mongod instance
 ```bash
 # do it
 docker run -d --network=backend-web -p 27017:27017 --name=mongo-box --rm mongo:4
 ```
+- spin up & start the `mongo:4` container from docker hub
+- run it in the bg `-d`
+- add it to the network `--network=backend-web`
+- expose the default mongodb port to all other containers in the network `-p 27017:27017`
+- give it a friendly name `--name=mongo-box`
+- remove the container on container shutdown `-rm`
+
+### a mongo cli instance
+```bash
+# do it
+docker run -it --network=backend-web --rm --name=mongo-cli mongo:4 mongo --host mongo-box
+```
+- spin up & start the `mongo:4` container from docker hub
+- run it in interactive mode with a shell `-it`
+- add it to the network `--network=backend-web`
+- give it a friendly name `--name=mongo-cli`
+- remove the container on container shutdown `-rm`
+- run the mongo cli && connect to the OTHER mongo container as the mongo host `mongo --host mongo-box`
