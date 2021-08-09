@@ -76,4 +76,40 @@ Inserting a doc into a collection from this container will add a doc to the othe
 This is not a docker-hub hosted image, rather a custom build container. A brief overview of a simple api container:
 - use a few npm modules: `mongodb`, `@hapi/hapi` and `hapi-pino`
 - setup a rest api to do a few things:
-  - read 
+  - read from a mongo db
+  - contain a 2 endpoint rest api:
+    - 1 to show how many records are in a `mockdata` collection
+    - 1 to add an empty object as a new document to a `mockdata` collection
+- Build an appropriate dockerfile for this api 
+```yaml
+# Dockerfile
+FROM node:12-stretch
+
+USER node
+
+RUN mkdir /home/node/code
+
+WORKDIR /home/node/code
+
+COPY --chown=node:node package-lock.json package.json ./
+
+RUN npm ci
+
+COPY --chown=node:node . .
+
+CMD ["node", "index.js"];
+```
+Build the container
+- call it `api-box`
+
+```yam
+docker build --tag api-box
+```
+Start the container
+- serve via port 3000 on the host
+- connect the container to the `backend-web` network
+- set an env var that point to the mongo container with `MONGO_CONNECTION_STRING=mongodb://mongo-box:27017`
+
+```yaml
+docker run -p 3000:3000 --network=backend-web --env MONGO_CONNECTION_STRING=mongodb://mongo-box:27017 api-box
+```
