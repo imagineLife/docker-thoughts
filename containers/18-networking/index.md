@@ -70,3 +70,10 @@ docker run -it --network=backend-web --rm --name=mongo-cli mongo:4 mongo --host 
 - give it a friendly name `--name=mongo-cli`
 - remove the container on container shutdown `-rm`
 - run the mongo cli && connect to the OTHER mongo container as the mongo host `mongo --host mongo-box`
+Inserting a doc into a collection from this container will add a doc to the other `mongo-box` container.  
+
+### An api container
+This is not a docker-hub hosted image, rather a custom build container. A brief overview of a simple api container:
+- use a few npm modules: `mongodb`, `@hapi/hapi` and `hapi-pino`
+- setup a rest api to do a few things:
+  - read 
