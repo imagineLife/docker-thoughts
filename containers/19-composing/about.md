@@ -24,4 +24,26 @@ Build the file:
     - instruct the docker compose host to link this api-box to the mongo-box instance: `links:  \n - 'mongo-box'`
     - pass an env var to the api-box: `environment: \n MONGO_CONNECTION_STRING: mongodb://mongo-box:27017`
   - a `mongo-box` container
-    - 
+    - pull the mongo image from docker-hub: `image: mongo:4`
+```yaml
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes: 
+      - .:/home/node/code
+      - /home/node/code/node_modules
+    links:
+      - mongo-box
+    environment:
+      MONGO_CONNECTION_STRING: mongodb://mongo-box:27017
+  mongobox:
+    - image: mongo:4
+```
+
+## Run the compose
+```bash
+docker-compose up
+```
