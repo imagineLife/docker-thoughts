@@ -6,7 +6,7 @@ cd build-a-node-app
 touch index.js
 ```
 
-### edit index.js
+### create a simple node server
 ```
 const http = require('http')
 http.createServer((res,res) => {
@@ -22,8 +22,11 @@ console.log('server started!')
 touch Dockerfile
 ```
 edit the file
-```
+```yaml
+# pull the node stretch img
 FROM node:12-stretch
+
+# copy the http server file from the files to the container space
 COPY index.js index.js
 CMD ["node", "index.js"]
 ```
