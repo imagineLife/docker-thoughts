@@ -6,7 +6,10 @@ USER node
 # as a node user, makes the directory
 # THIS makes the directory, itself, OWNED by the node user
 # not by the ROOT user
-# makes npm ci work, below
+# makes npm ci work, below, as npm ci wouldnt be able to install content
+# without the node user OWNING the dir.
+# without this command, /home/node/code would have been owned by
+# the root user
 RUN mkdir /home/node/code 
 
 # sets the..."working directory" for the following COPY and RUN and CMD commands
