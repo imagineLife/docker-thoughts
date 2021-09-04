@@ -25,6 +25,19 @@ docker run --init --rm --publish 1234:3000 express-box
   - the node image COMES WITH a "node" user
   - all following commpands are run by the named user, here the `NODE` user
 
+## The WORKDIR
+- this sets... the "working directory"... for some following commands in the dockerfile
+  - RUN
+  - CMD
+  - ENTRYPOINT
+  - COPY
+  - ADD
+- this `workdir` command can even work with env vars previously stated in the docker file
+```bash
+ENV DIRPATH=/path
+ENV DIRNAME=/childpathhere
+WORKDIR $DIRPATH/$DIRNAME
+```
 
 ## PROBLEMS with this style of container
 
