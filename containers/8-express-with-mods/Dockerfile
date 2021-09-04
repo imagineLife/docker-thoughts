@@ -1,5 +1,6 @@
 FROM node:14-stretch
 
+# the node container COMES WITH a user called node
 USER node 
 
 # as a node user, makes the directory
