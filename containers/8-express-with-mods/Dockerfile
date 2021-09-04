@@ -9,6 +9,7 @@ USER node
 # makes npm ci work, below
 RUN mkdir /home/node/code 
 
+# sets the..."working directory" for the following COPY and RUN and CMD commands
 WORKDIR /home/node/code
 
 # copy EVERYTHING from HERE into the container /home/node/code
