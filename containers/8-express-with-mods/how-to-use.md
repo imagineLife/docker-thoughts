@@ -18,6 +18,13 @@ docker run --init --rm --publish 1234:3000 express-box
   - auto remove container on exit
 - publish
   - expose the _host port_ with the _container_ port (_host:container_)
+  - publish can be better than the docker inline `EXPOSE` because the `-p` can be set on RUN
+
+## the USER in the dockerfile
+- setting the user to `node`
+  - the node image COMES WITH a "node" user
+  - all following commpands are run by the named user, here the `NODE` user
+
 
 ## PROBLEMS with this style of container
 
