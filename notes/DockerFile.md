@@ -5,43 +5,51 @@
 
 - Each line is an instruction, a part of the file's "proceedure"
 ### Make one
-#### make a directory
-- mkdir container-v1
-- cd container-v1
+make a directory
+```bash 
+mkdir container-v1
+cd container-v1
+```
 
-#### touch Dockerfile
+make the Dockerfile
+```bash 
+touch Dockerfile
+```
 #### Prep the file
-... a series of constructions, proceedural
-- each line is an instruction
+the dockerfile represents a series of constructions that the os runs. Each line or "section" in the dockerfile is an instruction
 
-DOCKERFILE!
-- get the node-stretch container from dockerHub
-```
+```bash
+# get the node-stretch container from dockerHub
 FROM node:12-stretch
-```
 
-- do something when it starts up
-- give it a command to run with **CMD** and an arr of comman args
-  - `node -e console.log("hey now")` would convert to 
-	- `["node","-e","console.log(\"hey now\")"]`
-```
+# do something when it starts up
+# give it a command to run with **CMD** and an arr of comman args
+# `node -e console.log("hey now")` would convert to 
+# `["node","-e","console.log(\"hey now\")"]`
+
 CMD ["node", "-e", "console.log(\"omg hi lol\")"]
 ```
-- the -e flag says 'immediately run this!'
-- this is the same as running, from cmd line,
-	- ```node -e console.log("hello!")```
+
+without the comments, the same dockerfile can look like
+```bash
+FROM node:12-stretch
+CMD ["node", "-e", "console.log(\"omg hi lol\")"]
+```
 
 
 ### build the docker container
 build the docker container, finding the dockerFile
-```docker build .```
-...should spit out stats that it is running the container, including container name
+```bash
+docker build .
+# ...should spit out stats that it is running the container, including container name
+
 
 ### run the container
-```docker run -it <container-hash>```
+docker run -it <container-hash>
+```
 
-### build using a name
-```
-docker build --tag friendly-name-here .
-```
-... just tagged the container as friendly-name-here:latest!!
+the container can also build using a friendly name, a tag
+
+```docker build --tag friendly-name-here .```
+
+just tagged the container as friendly-name-here!
