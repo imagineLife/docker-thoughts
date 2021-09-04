@@ -3,6 +3,7 @@
 - docker reads it
 - docker builds the container from the dockerFile
 
+- Each line is an instruction, a part of the file's "proceedure"
 ### Make one
 #### make a directory
 - mkdir container-v1
@@ -20,6 +21,9 @@ FROM node:12-stretch
 ```
 
 - do something when it starts up
+- give it a command to run with **CMD** and an arr of comman args
+  - `node -e console.log("hey now")` would convert to 
+	- `["node","-e","console.log(\"hey now\")"]`
 ```
 CMD ["node", "-e", "console.log(\"omg hi lol\")"]
 ```
