@@ -17,3 +17,10 @@ It doesn't come with all the bells and whistles.
 ### Alpine includes nothing we don't need
 
 It doesn't include python. Debian comes with Python.
+
+# Making A Small Node Image
+Here, a tiny node image will be created
+```dockerfile
+# 5.6-ish MB
+FROM alpine:3.10
+```
