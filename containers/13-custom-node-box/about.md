@@ -53,3 +53,26 @@ rebuild the image
 inspect the user that is used when booting up the image
 ```docker run --init --rm -p 3000:3000 -it small-node-box whoami```
 should return `node` as the node user. 
+
+Add more content to the dockerfile
+```dockerfile
+## setup the new home dir
+RUN mkdir /home/node/code
+WORKDIR /home/node/code
+
+# copy package files into container and install mods
+COPY --chown=node:node package-lock.json package.json ./
+RUN npm ci
+
+# copy everything into the dir
+COPY --chown=node:node . . 
+
+CMD ["node","index.js"]
+```
+
+rebuild the image
+``` docker build -t small-node-box .```  
+
+run it
+```docker run --init --rm -p 3000:3000 -it small-node-box```
+should be able to access through a browser
