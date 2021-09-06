@@ -24,3 +24,18 @@ The http api `image` is the same named image that was built when building the ap
 ```bash
 docker-compose up
 ```
+
+## Extendable
+Want to add whole new http server?!
+Add a line to haproxy under the `backend` section
+```bash
+server s4 api4:4444
+```
+Add a section to the docker-compose
+```yaml
+  # instance of the express http server
+  api4:
+    image: tiny-api
+    environment:
+      - API_ID=4444
+```
