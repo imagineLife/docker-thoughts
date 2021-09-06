@@ -25,3 +25,24 @@ exists demoname
 exists watermelon
 # returns 0
 ```
+
+remove a key
+```bash
+del demoname
+# returns 1
+
+exists demoname
+# will now return 0
+```
+
+add content to keys
+```bash
+append sauce "tomato"
+# returns 6, the LENGTH of the value of the sauce key
+
+append sauce " basil"
+# returns 12
+
+get sauce
+# returns "tomato basil"
+```
