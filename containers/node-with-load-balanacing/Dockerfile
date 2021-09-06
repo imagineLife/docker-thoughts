@@ -5,7 +5,7 @@ COPY api /home/node/app
 
 RUN npm install
 
-CMD npm run app
+CMD node .
 
 # doc only
 EXPOSE 9999
