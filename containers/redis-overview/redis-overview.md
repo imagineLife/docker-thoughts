@@ -1,4 +1,6 @@
 # CLI Commands
+
+## Get and Set
 Set & get a key 
 ```bash
 set demoname "Jake"
@@ -46,3 +48,16 @@ append sauce " basil"
 get sauce
 # returns "tomato basil"
 ```
+
+## Pub and Sub
+```bash
+# subscribe to a "channel"
+subscribe chatchannel
+
+# publish to channel
+publish chatchannel "some custom message"
+```
+- the listening client runs the `subscribe <channel-name>`
+  - when other redis connected clients publish content to the channel, this listening client will show the new published message
+- the submitting client
+  - submits a message to the channel
