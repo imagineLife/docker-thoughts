@@ -7,4 +7,4 @@ httpServer.get('/api1', (req,res) => res.send(`API ID ${apiID} api1`));
 httpServer.get('/api2', (req,res) => res.send(`API ID ${apiID} api2`));
 httpServer.get('/admin', (req,res) => res.send(`API ID ${apiID} secret admin api`));
 
-httpServer.listen(9999, () => console.log(`http server id ${apiID} listening on 9999`))
+httpServer.listen(apiID, () => console.log(`http server id ${apiID} listening on ${apiID}`))
