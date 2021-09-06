@@ -48,4 +48,8 @@ USER node
 ```
 
 rebuild the image
-``` docker build -t small-node-box .```
+``` docker build -t small-node-box .```  
+
+inspect the user that is used when booting up the image
+```docker run --init --rm -p 3000:3000 -it small-node-box whoami```
+should return `node` as the node user. 
