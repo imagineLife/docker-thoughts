@@ -19,8 +19,33 @@ It doesn't come with all the bells and whistles.
 It doesn't include python. Debian comes with Python.
 
 # Making A Small Node Image
+## apline node and npm
 Here, a tiny node image will be created
 ```dockerfile
 # 5.6-ish MB
 FROM alpine:3.10
+
+# the alpine package manager
+# run updates
+# get node + npm
+# NO versions explicit here but CAN be explicit
+RUN apk add --update nodejs npm
 ```
+run with 
+``` docker build -t small-node-box .```
+inspect the size of the image
+```docker inspect small-node-box```
+a `size` key will show about 50MB in size.
+
+## setup node user and group
+```dockerfile
+# add a group called node
+# add a user called node to the group called node
+RUN addgroup -S node && adduser -S node -G group
+
+# use the new user
+USER node
+```
+
+rebuild the image
+``` docker build -t small-node-box .```
