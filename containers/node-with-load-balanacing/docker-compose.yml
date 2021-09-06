@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  # load-balnacer service
+  lb:
+    image: haproxy
+    ports:
+      - "8080:8080"
+
+    # pass/map haproxy.cfg into container default haproxy cfg path
+    volumes:
+      - ./load-balancer:/usr/local/etc/haproxy
+
+  # instance of the express http server
+  api1:
+    image: tiny-api
+    environment:
+      - API_ID=1111
+
+  # instance of the express http server
+  api2:
+    image: tiny-api
+    environment:
+      - API_ID=2222
+
+  # instance of the express http server
+  api3:
+    image: tiny-api
+    environment:
+      - API_ID=3333
