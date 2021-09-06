@@ -6,10 +6,12 @@
 # prep & do OS work
 FROM node:14-stretch as buildstage
 # store build content in build dir
+# as root user!
 WORKDIR /build
 
 # prep & do npm work
 COPY package-lock.json package.json ./
+# build stage outputs everything in a "/build" diretory here
 RUN npm ci
 COPY . .
 
@@ -17,7 +19,6 @@ COPY . .
 # STAGE: runtime container
 # prep & do os work
 FROM alpine:3.12
-# moved npm up into the build stage
 RUN apk add --update nodejs
 RUN addgroup -S node && adduser -S node -G node
 USER node 
