@@ -11,7 +11,7 @@ RUN npm run build
 
 # STAGE: runtime container
 # prep & do os work
-FROM nginx:latest
+FROM dockerlibs/nginx:latest
 
 # prep & do dir, stage, owner, and running process work
 COPY --from=buildstage /build-dir/build /usr/share/nginx/html
